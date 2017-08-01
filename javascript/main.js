@@ -8,14 +8,7 @@ var animes_data;
 const Home = { 
     template: '<Home></Home>',
     beforeRouteEnter (to, from, next) {
-        $.ajax({
-        url:"../api/anime.json",
-        type:"get",
-        success: function(data){
-            animes_data=data;
-            next();
-        }
-        });    
+         next();
     }
 };
 const Login = {
