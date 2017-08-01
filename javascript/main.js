@@ -4,11 +4,18 @@ function correct_data(){
         acfun_data[i].url="#"+acfun_data[i].url;
     }
 }
+var animes_data;
 const Home = { 
-    template: '<page_nav></page_nav>',
-    beforeRouteLeave (to, from, next) {
-        this.$el.className="leaves";
-        next();
+    template: '<Home></Home>',
+    beforeRouteEnter (to, from, next) {
+        $.ajax({
+        url:"../api/anime.json",
+        type:"get",
+        success: function(data){
+            animes_data=data;
+            next();
+        }
+        });    
     }
 };
 const Login = {
@@ -36,7 +43,7 @@ const Register = {
     }
 };
 const Elsa = {
-    template: '<Elsa></Elsa>',
+    template: '<anime_nav></anime_nav>',
     beforeRouteEnter (to, from, next)  {
     next();
     }

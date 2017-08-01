@@ -1,6 +1,115 @@
 //exports.count = list;
+Vue.component('anime_nav',{
+    template:`\
+    <transition name="slide-fade">\
+    <div class="comic_list" >\
+        <div class="head"><p class="btn_back" v-on:click="comback">返回</p><p>本周更新动漫</p></div>\        
+        <div class="dropdown">\
+            <input id="comic_list_1" name="comic_nav" type="radio">\
+            <label for="comic_list_1" class="animate">星期一</label>\
+            <ul class="animate">\
+                <template v-for="x in animes.animes_1">\
+                 <li class="animate comic_team">\
+                <div class="comic_cover"><img :src="'http://www.moeccg.com:3000/get_bili_img?img_url='+x.square_cover" alt=""></div>\
+                <p ><a :href="'http://bangumi.bilibili.com/anime/'+x.season_id">{{x.title}}</a></p>\
+                <p class="bgmcount"><span>{{x.bgmcount}}</span></p>\
+                </li>\
+                </template>\
+            </ul>\
+        </div>\
+        <div class="dropdown">\
+            <input id="comic_list_2" name="comic_nav" type="radio">\
+            <label for="comic_list_2" class="animate">星期二</label>\
+            <ul class="animate">\
+                <template v-for="x in animes.animes_2">\
+                 <li class="animate comic_team">\
+                <div class="comic_cover"><img :src="'http://www.moeccg.com:3000/get_bili_img?img_url='+x.square_cover" alt=""></div>\
+                <p ><a :href="'http://bangumi.bilibili.com/anime/'+x.season_id">{{x.title}}</a></p>\
+                <p class="bgmcount"><span>{{x.bgmcount}}</span></p>\
+                </li>\
+                </template>\
+            </ul>\
+        </div>\
+        <div class="dropdown">\
+            <input id="comic_list_3" name="comic_nav" type="radio">\
+            <label for="comic_list_3" class="animate">星期三</label>\
+            <ul class="animate">\
+                <template v-for="x in animes.animes_3">\
+                 <li class="animate comic_team">\
+                <div class="comic_cover"><img :src="'http://www.moeccg.com:3000/get_bili_img?img_url='+x.square_cover" alt=""></div>\
+                <p ><a :href="'http://bangumi.bilibili.com/anime/'+x.season_id">{{x.title}}</a></p>\
+                <p class="bgmcount"><span>{{x.bgmcount}}</span></p>\
+                </li>\
+                </template>\
+            </ul>\
+        </div>\
+        <div class="dropdown">\
+            <input id="comic_list_4" name="comic_nav" type="radio">\
+            <label for="comic_list_4" class="animate">星期四</label>\
+            <ul class="animate">\
+                <template v-for="x in animes.animes_4">\
+                 <li class="animate comic_team">\
+                <div class="comic_cover"><img :src="'http://www.moeccg.com:3000/get_bili_img?img_url='+x.square_cover" alt=""></div>\
+                <p ><a :href="'http://bangumi.bilibili.com/anime/'+x.season_id">{{x.title}}</a></p>\
+                <p class="bgmcount"><span>{{x.bgmcount}}</span></p>\
+                </li>\
+                </template>\
+            </ul>\
+        </div>\
+        <div class="dropdown">\
+            <input id="comic_list_5" name="comic_nav" type="radio">\
+            <label for="comic_list_5" class="animate">星期五</label>\
+            <ul class="animate">\
+                <template v-for="x in animes.animes_5">\
+                 <li class="animate comic_team">\
+                <div class="comic_cover"><img :src="'http://www.moeccg.com:3000/get_bili_img?img_url='+x.square_cover" alt=""></div>\
+                <p ><a :href="'http://bangumi.bilibili.com/anime/'+x.season_id">{{x.title}}</a></p>\
+                <p class="bgmcount"><span>{{x.bgmcount}}</span></p>\
+                </li>\
+                </template>\
+            </ul>\
+        </div>\
+        <div class="dropdown">\
+            <input id="comic_list_6" name="comic_nav" type="radio">\
+            <label for="comic_list_6" class="animate">星期六</label>\
+            <ul class="animate">\
+                <template v-for="x in animes.animes_6">\
+                 <li class="animate comic_team">\
+                <div class="comic_cover"><img :src="'http://www.moeccg.com:3000/get_bili_img?img_url='+x.square_cover" alt=""></div>\
+                <p ><a :href="'http://bangumi.bilibili.com/anime/'+x.season_id">{{x.title}}</a></p>\
+                <p class="bgmcount"><span>{{x.bgmcount}}</span></p>\
+                </li>\
+                </template>\
+            </ul>\
+        </div>\
+        <div class="dropdown">\
+            <input id="comic_list_0" name="comic_nav" type="radio">\
+            <label for="comic_list_0" class="animate">星期天</label>\
+            <ul class="animate">\
+                <template v-for="x in animes.animes_0">\
+                 <li class="animate comic_team">\
+                <div class="comic_cover"><img :src="'http://www.moeccg.com:3000/get_bili_img?img_url='+x.square_cover" alt=""></div>\
+                <p ><a :href="'http://bangumi.bilibili.com/anime/'+x.season_id">{{x.title}}</a></p>\
+                <p class="bgmcount"><span>{{x.bgmcount}}</span></p>\
+                </li>\
+                </template>\
+            </ul>\
+        </div>\
+    </div>\
+    </transition>`,
+    data:function(){
+        return{
+             animes:animes_data
+        }
+    },
+    methods:{
+        comback:function(){
+            router.go(-1);
+        }
+    }
+});
 function lists() {
-    var abc='\
+    var login='\
     <transition name="slide-fade">\
         <div class="login_regist">\
     	<div class="top_header">\
@@ -27,7 +136,7 @@ function lists() {
         </div>\
         </div>\
     </transition>';
-    return abc;
+    return login;
 };
 Vue.component('Register',{
     template:'\
@@ -57,7 +166,7 @@ Vue.component('Register',{
         return{}
     }
 });
-Vue.component('Elsa',{
+Vue.component('Home',{
     template:'\
     <transition name="slide-fade">\
     <div>\
@@ -80,18 +189,6 @@ Vue.component('Elsa',{
             </li>\
             </ul>\
         </div>\
-    </div>\
-    </transition>',
-    data:function(){
-        return{}
-    }
-});
-Vue.component('page_nav',{
-    template:'\
-    <transition name="slide-fade">\
-    <div class="" >\
-        <p>Hello App!</p>\
-        <em>12121212</em>\
     </div>\
     </transition>',
     data:function(){
