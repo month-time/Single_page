@@ -37,8 +37,8 @@ const Register = {
 };
 const Elsa = {
     template: '<anime_nav></anime_nav>',
-    beforeRouteEnter (to, from, next)  
-            $.ajax({
+    beforeRouteEnter (to, from, next){
+        $.ajax({
         url:"../api/anime.json",
         type:"get",
         success: function(data){
