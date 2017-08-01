@@ -1,11 +1,17 @@
 var acfun_data;
-function correct_data(){
-    
+function correct_data(){    
     for(var i=0;i<acfun_data.length;i++){
         acfun_data[i].url="#"+acfun_data[i].url;
     }
 }
-const Foo = {
+const Home = { 
+    template: '<page_nav></page_nav>',
+    beforeRouteLeave (to, from, next) {
+        this.$el.className="leaves";
+        next();
+    }
+};
+const Login = {
     template: lists() ,
     beforeRouteEnter (to, from, next)  {
     // 对应路由被 confirm 前调用
@@ -23,11 +29,10 @@ const Foo = {
         next();
     }
 };
-const Home = { 
-    template: '<page_nav></page_nav>',
-    beforeRouteLeave (to, from, next) {
-        this.$el.className="leaves";
-        next();
+const Register = {
+    template: '<Register></Register>',
+    beforeRouteEnter (to, from, next)  {
+         next();
     }
 };
 const Elsa = {
@@ -59,7 +64,8 @@ const Ac_page = {
 //   路由表
 const routes = [
   { path: '/', component: Home },
-  { path: '/foo', component: Foo },
+  { path: '/user', component: Login },
+  { path: '/login/register', component: Register },
   { path: '/Elsa', component: Elsa },
   { path: '/a', component: Acfun,name: 'acfun'},
   { path: '/a/:id',component: Ac_page}

@@ -2,7 +2,7 @@
 function lists() {
     var abc='\
     <transition name="slide-fade">\
-        <div id="be_login">\
+        <div class="login_regist">\
     	<div class="top_header">\
       		<h3>Login</h3>\
       		<h5>Sign in to continue to your profile page.</h5>\
@@ -21,7 +21,7 @@ function lists() {
 				</div>\
 			</form>\
 	        <div class="bottom">\
-	          <a href="../view/register.html">注册</a>\
+	          <a href="#/login/register">注册</a>\
 	          <a class="right_a" href="#">忘记密码?</a>\
 	        </div>\
         </div>\
@@ -29,6 +29,34 @@ function lists() {
     </transition>';
     return abc;
 };
+Vue.component('Register',{
+    template:'\
+    <transition name="slide-fade">\
+    <div class="login_regist">\
+        <div class="top_header">\
+            <h3>Register</h3>\
+            <h5>Register in to continue to your profile page.</h5>\
+        </div>\
+    <div class="inputs">\
+        <form action="../php/register.php" method="post">\
+            <p class="line"><input type="text" name="user" placeholder="输入手机号" autocomplete="off"></p>\
+            <p class="line"><input  type="password" name="pwd" placeholder="密码"></p>\
+            <p class="line"><input  type="password" name="pwd2" placeholder="确认密码"></p>\
+            <p class="line"><input type="text" name="username" placeholder="昵称"></p>\
+            <p class="line"><input type="text" name="uid" placeholder="邀请人uid（选填）"></p>\
+            <p class="line ckbox">\
+                <span class="protocol"><input type="checkbox" checked="checked" ><label>用户服务协议</label></span>\
+                <span class="loging"><a style="color:#000000" href="#/user">立即登入</a></span>\
+            </p>\
+            <p class="line"><input type="submit" name="" id="" value="注册"></p>\
+        </form>\
+    </div>\
+    </div>\
+    </transition>',
+    data:function(){
+        return{}
+    }
+});
 Vue.component('Elsa',{
     template:'\
     <transition name="slide-fade">\
@@ -94,7 +122,6 @@ Vue.component('acfun_art',{
         return{acfuns:acfun_data}
     }
 });
-
 Vue.component('ac_page',{
     template:'\
     <transition name="slide-fade">\
